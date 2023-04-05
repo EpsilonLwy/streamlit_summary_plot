@@ -10,10 +10,11 @@ path = 'D:/SolO_epd_py/Summary_plot/summary_plot_page'
 st.title('Summary Plot Overview')
 select_day = st.sidebar.date_input("Select Date", datetime.date(2022, 1, 1))
 name = str(select_day.year) + str(select_day.month).rjust(2, '0') + str(select_day.day).rjust(2, '0')
-start_time = Time(str(select_day), format='isot', scale='utc')
+# start_time = Time(str(select_day), format='isot', scale='utc')
 # end_time = Time(start_time.jd+1, format='jd', scale='utc')
 # st.markdown('## Time Range：'+start_time.isot[0:10].replace('-', '/')+' — '+end_time.isot[0:10].replace('-', '/'))
-st.markdown('## Time Range：' + start_time.isot[0:10].replace('-', '/'))
+# st.markdown('## Time Range：' + start_time.isot[0:10].replace('-', '/'))
+st.markdown('## Time Range：' + str(select_day).replace('-', '/'))
 
 st.header('1. Solar Orbiter')
 col1, col2 = st.columns(2)
