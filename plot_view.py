@@ -6,7 +6,7 @@ from astropy.time import Time
 
 # path = os.getcwd()
 # path = 'D:/SolO_epd_py/Summary_plot/summary_plot_page'
-path = ''
+path = 'https://github.com/EpsilonLwy/streamlit_summary_plot/master'
 # st.markdown("# Summary Plot Overview")
 st.title('Summary Plot Overview')
 select_day = st.sidebar.date_input("Select Date", datetime.date(2022, 1, 1))
