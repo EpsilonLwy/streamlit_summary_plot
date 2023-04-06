@@ -5,7 +5,8 @@ from PIL import Image
 from astropy.time import Time
 
 # path = os.getcwd()
-path = 'D:/SolO_epd_py/Summary_plot/summary_plot_page'
+# path = 'D:/SolO_epd_py/Summary_plot/summary_plot_page'
+path = ''
 # st.markdown("# Summary Plot Overview")
 st.title('Summary Plot Overview')
 select_day = st.sidebar.date_input("Select Date", datetime.date(2022, 1, 1))
@@ -29,7 +30,7 @@ with col1:
         st.write('N/A')
 with col2:
     st.header("(2) SWA-MAG (res:3min)")
-    file_swa_mag = 'D:/Summary_Plot/Solar-Orbit/SWA-MAG/' + str(select_day.year) + '/pas_mag_' + name + '.png'
+    file_swa_mag = path.replace('\\', '/') + '/Summary_Plot/Solar-Orbit/SWA-MAG/' + str(select_day.year) + '/pas_mag_' + name + '.png'
     if os.path.isfile(file_swa_mag):
         st.image(Image.open(file_swa_mag))
     else:
@@ -37,14 +38,14 @@ with col2:
 col1, col2 = st.columns(2)
 with col1:
     st.header("(3) SIS (res:10min)")
-    file_sis = 'D:/Summary_Plot/Solar-Orbit/EPD/sis/' + str(select_day.year) + '/sis_ion_' + name + '.png'
+    file_sis = path.replace('\\', '/') + '/Summary_Plot/Solar-Orbit/EPD/sis/' + str(select_day.year) + '/sis_ion_' + name + '.png'
     if os.path.isfile(file_sis):
         st.image(Image.open(file_sis))
     else:
         st.write('N/A')
 with col2:
     st.header("(4) HET (res:10min)")
-    file_het = 'D:/Summary_Plot/Solar-Orbit/EPD/het/' + str(select_day.year) + '/het_ion_electron_' + name + '.png'
+    file_het = path.replace('\\', '/') + '/Summary_Plot/Solar-Orbit/EPD/het/' + str(select_day.year) + '/het_ion_electron_' + name + '.png'
     if os.path.isfile(file_het):
         st.image(Image.open(file_het))
     else:
@@ -52,7 +53,7 @@ with col2:
 st.write("PS: A black colorbar and a black spectrum stand for one data point detected; \n "
          "a black colorbar and an empty spectrum stand for no data point detected")
 st.header("(5)STIX")
-file_stix = 'D:/Summary_Plot/Solar-Orbit/STIX/STIX-LC/' + str(select_day.year) + '/stix_lightcurve_' + name + '.png'
+file_stix = path.replace('\\', '/') + '/Summary_Plot/Solar-Orbit/STIX/STIX-LC/' + str(select_day.year) + '/stix_lightcurve_' + name + '.png'
 if os.path.isfile(file_stix):
     st.image(Image.open(file_stix))
 else:
@@ -62,14 +63,14 @@ st.header('2. WIND')
 col1, col2 = st.columns(2)
 with col1:
     st.header("(1) 0-1 (res:3min)")
-    file_3dp_01 = 'D:/Summary_Plot/WIND/3dp/' + str(select_day.year) + '/WIND_3dp_01_' + name + '.png'
+    file_3dp_01 = path.replace('\\', '/') + '/Summary_Plot/WIND/3dp/' + str(select_day.year) + '/WIND_3dp_01_' + name + '.png'
     if os.path.isfile(file_3dp_01):
         st.image(Image.open(file_3dp_01))
     else:
         st.write('N/A')
 with col2:
     st.header("(2) 6-7 (res:3min)")
-    file_3dp_67 = 'D:/Summary_Plot/WIND/3dp/' + str(select_day.year) + '/WIND_3dp_67_' + name + '.png'
+    file_3dp_67 = path.replace('\\', '/') + '/Summary_Plot/WIND/3dp/' + str(select_day.year) + '/WIND_3dp_67_' + name + '.png'
     if os.path.isfile(file_3dp_67):
         st.image(Image.open(file_3dp_67))
     else:
@@ -77,14 +78,14 @@ with col2:
 col1, col2 = st.columns(2)
 with col1:
     st.header("(3) pm_mfi (res:3min)")
-    file_sol_wind = 'D:/Summary_Plot/WIND/mfi_pm/' + str(select_day.year) + '/WIND_mfi_pm_' + name + '.png'
+    file_sol_wind = path.replace('\\', '/') + '/Summary_Plot/WIND/mfi_pm/' + str(select_day.year) + '/WIND_mfi_pm_' + name + '.png'
     if os.path.isfile(file_sol_wind):
         st.image(Image.open(file_sol_wind))
     else:
         st.write('N/A')
 with col2:
     st.header("(4) PAD (res:3min)")
-    file_wind_pad = 'D:/Summary_Plot/WIND/3dp/' + str(select_day.year) + '/WIND_3dp_pad_' + name + '.png'
+    file_wind_pad = path.replace('\\', '/') + '/Summary_Plot/WIND/3dp/' + str(select_day.year) + '/WIND_3dp_pad_' + name + '.png'
     if os.path.isfile(file_wind_pad):
         st.image(Image.open(file_wind_pad))
     else:
@@ -99,7 +100,7 @@ name1_Time = Time(name1_jd, format='jd', scale='utc')
 name2_Time = Time(name2_jd, format='jd', scale='utc')
 name1_str = name1_Time.isot[0:4] + name1_Time.isot[5:7] + name1_Time.isot[8:10]
 name2_str = name2_Time.isot[0:4] + name2_Time.isot[5:7] + name2_Time.isot[8:10]
-file_orbit = 'D:/Summary_Plot/Planet_Orbit/' + str(select_day.year) + '/solo_planet_orbit_1_week_' + name1_str + 'T' \
+file_orbit = path.replace('\\', '/') + '/Summary_Plot/Planet_Orbit/' + str(select_day.year) + '/solo_planet_orbit_1_week_' + name1_str + 'T' \
              + name2_str + '.png'
 if os.path.isfile(file_orbit):
     st.image(Image.open(file_orbit))
