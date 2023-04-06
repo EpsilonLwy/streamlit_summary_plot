@@ -86,7 +86,7 @@ with col1:
         st.write('N/A')
 with col2:
     st.header("(4) PAD (res:3min)")
-    file_wind_pad = path.replace('\\', '/') + '/Summary_Plot/WIND/3dp/' + str(select_day.year) + '/WIND_3dp_pad_' + name + '.png'
+    file_wind_pad = path.replace('\\', '/') + '/Summary_Plot/WIND/3dp/' + str(select_day.year) + '/WIND_3dp_PAD_' + name + '.png'
     if os.path.isfile(file_wind_pad):
         st.image(Image.open(file_wind_pad))
     else:
