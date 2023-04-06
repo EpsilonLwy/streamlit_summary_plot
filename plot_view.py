@@ -2,7 +2,7 @@ import streamlit as st
 import datetime
 import os
 from PIL import Image
-# from astropy.time import Time
+from astropy.time import Time
 
 # path = os.getcwd()
 path = 'D:/SolO_epd_py/Summary_plot/summary_plot_page'
@@ -10,11 +10,11 @@ path = 'D:/SolO_epd_py/Summary_plot/summary_plot_page'
 st.title('Summary Plot Overview')
 select_day = st.sidebar.date_input("Select Date", datetime.date(2022, 1, 1))
 name = str(select_day.year) + str(select_day.month).rjust(2, '0') + str(select_day.day).rjust(2, '0')
-# start_time = Time(str(select_day), format='isot', scale='utc')
+start_time = Time(str(select_day), format='isot', scale='utc')
 # end_time = Time(start_time.jd+1, format='jd', scale='utc')
 # st.markdown('## Time Range：'+start_time.isot[0:10].replace('-', '/')+' — '+end_time.isot[0:10].replace('-', '/'))
-# st.markdown('## Time Range：' + start_time.isot[0:10].replace('-', '/'))
-st.markdown('## Time Range：' + str(select_day).replace('-', '/'))
+st.markdown('## Time Range：' + start_time.isot[0:10].replace('-', '/'))
+# st.markdown('## Time Range：' + str(select_day).replace('-', '/'))
 
 st.header('1. Solar Orbiter')
 col1, col2 = st.columns(2)
@@ -90,18 +90,18 @@ with col2:
     else:
         st.write('N/A')
 
-# st.header('3. Orbit (Weekly)')
-# first_day_of_year = Time(start_time.isot[0:4] + '-01-01T00:00:00.000', format='isot', scale='utc')
-# week_num = (start_time.jd - first_day_of_year.jd) // 7
-# name1_jd = first_day_of_year.jd + week_num * 7
-# name2_jd = first_day_of_year.jd + (week_num + 1) * 7
-# name1_Time = Time(name1_jd, format='jd', scale='utc')
-# name2_Time = Time(name2_jd, format='jd', scale='utc')
-# name1_str = name1_Time.isot[0:4] + name1_Time.isot[5:7] + name1_Time.isot[8:10]
-# name2_str = name2_Time.isot[0:4] + name2_Time.isot[5:7] + name2_Time.isot[8:10]
-# file_orbit = 'D:/Summary_Plot/Planet_Orbit/' + str(select_day.year) + '/solo_planet_orbit_1_week_' + name1_str + 'T' \
-#              + name2_str + '.png'
-# if os.path.isfile(file_orbit):
-#     st.image(Image.open(file_orbit))
-# else:
-#     st.write('N/A')
+st.header('3. Orbit (Weekly)')
+first_day_of_year = Time(start_time.isot[0:4] + '-01-01T00:00:00.000', format='isot', scale='utc')
+week_num = (start_time.jd - first_day_of_year.jd) // 7
+name1_jd = first_day_of_year.jd + week_num * 7
+name2_jd = first_day_of_year.jd + (week_num + 1) * 7
+name1_Time = Time(name1_jd, format='jd', scale='utc')
+name2_Time = Time(name2_jd, format='jd', scale='utc')
+name1_str = name1_Time.isot[0:4] + name1_Time.isot[5:7] + name1_Time.isot[8:10]
+name2_str = name2_Time.isot[0:4] + name2_Time.isot[5:7] + name2_Time.isot[8:10]
+file_orbit = 'D:/Summary_Plot/Planet_Orbit/' + str(select_day.year) + '/solo_planet_orbit_1_week_' + name1_str + 'T' \
+             + name2_str + '.png'
+if os.path.isfile(file_orbit):
+    st.image(Image.open(file_orbit))
+else:
+    st.write('N/A')
