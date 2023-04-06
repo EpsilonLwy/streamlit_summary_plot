@@ -1,3 +1,2 @@
-astropy
-streamlit
+git+https://github.com/astropy/astropy.git
 PIL
