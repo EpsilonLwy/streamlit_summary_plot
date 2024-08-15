@@ -1,2 +1,1 @@
-
 git+https://github.com/astropy/astropy.git@v5.2.1
