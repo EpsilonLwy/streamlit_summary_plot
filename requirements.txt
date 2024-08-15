@@ -1,2 +1,1 @@
-pip install --upgrade pip
 astropy == 5.2.1
