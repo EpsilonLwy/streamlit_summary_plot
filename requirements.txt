@@ -1,1 +1,2 @@
-git+https://github.com/astropy/astropy.git@v5.2.1
+pip install --upgrade pip
+astropy == 5.2.1
